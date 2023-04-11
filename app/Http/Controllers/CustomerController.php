@@ -17,7 +17,7 @@ class CustomerController extends Controller
     public function getCustomers(Request $request)
     {
         $customers = (new CustomerService)->getCustomersListWithPagination($request->all());
-        return response()->json(['data' => $customers], 200);
+        return response()->json($customers, 200);
     }
 
     public function create() 
@@ -29,6 +29,6 @@ class CustomerController extends Controller
     {
         $newCustomer = (new CustomerService)->storeCustomer($request->all());
         (new AddressService)->storeAddress($request->all(), $newCustomer->id);
-        return response()->json(['data' => 'Created!'], 201);
+        return response()->json(['Created!'], 201);
     }
 }

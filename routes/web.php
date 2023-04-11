@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [CustomerController::class, 'index'])->name('customers');
+Route::get('/', [CustomerController::class, 'index']);
 
 Route::get('/customers', [CustomerController::class, 'index'])->name('customers');
 

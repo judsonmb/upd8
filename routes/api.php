@@ -19,6 +19,8 @@ use App\Http\Controllers\CityController;
 */
 Route::post('/customers', [CustomerController::class, 'getCustomers']);
 
+Route::get('/customers', [CustomerController::class, 'getCustomers']);
+
 Route::post('/customers/store', [CustomerController::class, 'store']);
 
 Route::get('/states', [StateController::class, 'getStates']);
