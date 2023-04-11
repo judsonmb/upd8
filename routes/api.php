@@ -21,6 +21,8 @@ Route::post('/customers', [CustomerController::class, 'getCustomers']);
 
 Route::post('/customers/store', [CustomerController::class, 'store']);
 
+Route::delete('/customers/{customer}', [CustomerController::class, 'delete']);
+
 Route::get('/states', [StateController::class, 'getStates']);
 
 Route::get('/state/{id}/cities', [CityController::class, 'getCitiesFromStateId']);

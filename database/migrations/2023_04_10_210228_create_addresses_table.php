@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('street')->nullable();
             $table->foreignId('city_id');
-            $table->foreignId('customer_id');
+            $table->unsignedBigInteger('customer_id');
             $table->timestamps();
+
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
         });
     }
 

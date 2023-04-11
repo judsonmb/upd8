@@ -7,6 +7,7 @@ use App\Services\CustomerService;
 use App\Services\AddressService;
 use App\Http\Requests\CustomerStoreRequest;
 use App\Http\Requests\GetCustomersRequest;
+use App\Models\Customer;
 
 class CustomerController extends Controller
 {
@@ -31,5 +32,11 @@ class CustomerController extends Controller
         $newCustomer = (new CustomerService)->storeCustomer($request->all());
         (new AddressService)->storeAddress($request->all(), $newCustomer->id);
         return response()->json(['Created!'], 201);
+    }
+
+    public function delete(Customer $customer) 
+    {
+        $customer->delete();
+        return response()->json(['Deleted!'], 200);
     }
 }

@@ -49,4 +49,9 @@ class CustomerService
         $newCustomer->save();
         return $newCustomer;
     }
+
+    public function deleteCustomer(int $id) 
+    {
+        return Customer::find($id)->delete();;
+    }
 }

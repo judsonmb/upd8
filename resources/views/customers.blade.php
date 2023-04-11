@@ -101,7 +101,7 @@
 
         tableHtml += '<tr>'+
                     '<td><button type="button" class="btn btn-success">Editar</button></td>' +
-                    '<td><button type="button" class="btn btn-danger">Excluir</button></td>' +
+                    '<td><a href="#"><button type="button" class="btn btn-danger" onClick="destroy('+data.data[i].id+');">Excluir</button></td>' +
                     '<td>' + data.data[i].name + '</td>' +
                     '<td>' + data.data[i].cpf + '</td>' +
                     '<td>' + birth + '</td>' +
@@ -137,6 +137,23 @@
     }
     
     $('#pagination').html(paginationHtml);
+  }
+
+  function destroy(id) 
+  {
+    var result = confirm("Tem certeza que quer deletar?");
+    if (result) {
+      $.ajax({
+        type: 'DELETE',
+        url : '/api/customers/'+id,
+        data : {},
+        dataType: 'json',
+          success:function(data) 
+          {
+            callSearchMethod();
+          }
+      });
+    }
   }
 
   function callSearchMethod(url = '/api/customers') 
@@ -178,6 +195,8 @@
           }
     });
   }
+
+  
 
 
   $(document).ready(function(){   
