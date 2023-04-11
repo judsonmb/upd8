@@ -15,27 +15,48 @@
               <form>
                 <div class="row">
                   <div class="col">
-                    CPF: <input type="text" class="form-control" placeholder="First name">
+                    CPF: <input type="text" id="cpf" class="form-control"  required>
                   </div>
                   <div class="col">
-                    Nome: <input type="text" class="form-control" placeholder="First name">
+                    Nome: <input type="text" id="name" class="form-control" required>
                   </div>
                   <div class="col">
-                    Data Nascimento: <input type="text" class="form-control" placeholder="First name">
+                    Data Nascimento: <input type="date" id="birth" class="form-control" required>
                   </div>
                   <div class="col">
-                    Sexo: <input type="text" class="form-control" placeholder="First name">
+                    Sexo: 
+                    <select name="gender" class="form-select" id="gender" required>
+                      <option selected>Selecione</option>
+                      <option value="M">Masculino</option>
+                      <option value="F">Feminino</option>
+                    </select>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col">
-                    Endereço: <input type="text" class="form-control" placeholder="First name">
+                    Endereço: <input type="text" id="address" class="form-control">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    Estado: 
+                    <select id="states" class="form-select" onChange="populateCitiesSelect();">
+                      <option selected>Selecione</option>
+                      
+                    </select>
                   </div>
                   <div class="col">
-                    Estado: <input type="text" class="form-control" placeholder="First name">
+                    Cidade: 
+                    <select id="cities" class="form-select">
+                      <option selected>Selecione um estado primeiro</option>
+                      
+                    </select>
                   </div>
+                </div>
+                <div class="row">
                   <div class="col">
-                    Cidade: <input type="text" class="form-control" placeholder="First name">
+                    <button type="button" onClick="callStoreMethod();" class="btn btn-primary">Salvar</button>
+                    <button type="button" onClick="emptyFields();" class="btn btn-secondary">Limpar</button>
                   </div>
                 </div>
               </form>
@@ -46,4 +67,35 @@
     </div>
   </div>
 </div>
+<script>
+  function callStoreMethod() 
+  {
+    body = {
+      cpf : $('#cpf').val(),
+      name : $('#name').val(),
+      birth : $('#birth').val(),
+      gender : $('#gender').val(),
+      address : $('#address').val(),
+      state_id : $('#states').find(":selected").val(),
+      city_id : $('#cities').find(":selected").val()
+    }
+
+    $.ajax({
+      type: 'POST',
+      url : '/api/customers/store',
+      data : body,
+      dataType: 'json',
+      success: function(data) 
+      {
+        console.log('foi!');
+      },
+      error: function(data)
+      {
+        $('#status').removeClass("d-none");
+        response = JSON.parse(data.responseText);
+        $('#status').html(response.message);
+      }
+    });
+  }
+</script>
 @endsection
