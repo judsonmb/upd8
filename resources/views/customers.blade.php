@@ -51,7 +51,7 @@
                             <div class="row">
                               <div class="col">
                                 <button type="button" onClick="callSearchMethod();" class="btn btn-primary">Pesquisar</button>
-                                <button type="button" onClick="emptyFields();" class="btn btn-secondary">Limpar</button>
+                                <button type="button" onClick="emptyFields();callSearchMethod();" class="btn btn-secondary">Limpar</button>
                               </div>
                             </div>
                           </form>
@@ -113,8 +113,6 @@
     $('#customerstable tbody').html(tableHtml);
 
     var paginationHtml = '';
-
-    console.log(data.links);
     
     //previous button
     if (data.links[0].url !== null) {
@@ -141,7 +139,7 @@
     $('#pagination').html(paginationHtml);
   }
 
-  function callSearchMethod(url = null) 
+  function callSearchMethod(url = '/api/customers') 
   {
     $('#customerstable tbody').html('');
     
@@ -151,17 +149,23 @@
       }
     });
 
-    body = {
-      cpf : $('#cpf').val(),
-      name : $('#name').val(),
-      birth : $('#birth').val(),
-      gender : $('#gender').find(":selected").val(),
-      address : $('#address').val(),
-      state_id : $('#states').find(":selected").val(),
-      city_id : $('#cities').find(":selected").val()
+    if ($('#cpf').val() === '' && 
+          $('#name').val() === '' &&
+          $('#birth').val() === '' &&
+          $('#gender').val() === '' &&
+          $('#states').val() === '' &&
+          $('#cities').val() === '') {
+      body = {}
+    } else {
+        body = {
+          cpf : $('#cpf').val(),
+          name : $('#name').val(),
+          birth : $('#birth').val(),
+          gender : $('#gender').find(":selected").val(),
+          state_id : $('#states').find(":selected").val(),
+          city_id : $('#cities').find(":selected").val()
+      }
     }
-
-    url = url === 'null' ? '/api/customers' : url;
 
     $.ajax({
         type: 'POST',

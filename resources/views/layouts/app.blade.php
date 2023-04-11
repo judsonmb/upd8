@@ -45,7 +45,7 @@
                 for (var i = 0; i < data.data.length; i++) {
                     citiesOptionsHtml += '<option value="'+data.data[i].id+'">'+data.data[i].name+'</option>';
                 }   
-                $('#cities').html('');
+                $('#cities').html('<option value="" selected>Selecione uma cidade</option>');
                 $('#cities').append(citiesOptionsHtml);
             }
         });
@@ -59,7 +59,7 @@
         $('#gender').val('');
         $('#address').val('');
         $('#states').find(":selected").removeAttr("selected");
-        $('#cities').html('<option selected>Selecione um estado primeiro</option>');
+        $('#cities').html('<option value="" selected>Selecione um estado primeiro</option>');
     }
     
     $(document).ready(function() {
