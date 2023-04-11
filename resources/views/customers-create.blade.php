@@ -88,6 +88,7 @@
       success: function(data) 
       {
         alert('cadastrado com sucesso!');
+        window.location.href = '/';
       },
       error: function(data)
       {
