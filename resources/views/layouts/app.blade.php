@@ -35,7 +35,6 @@
     function populateCitiesSelect()
     {
         var stateId = $('#states').find(":selected").val();
-        console.log(stateId);
         $.ajax({
             type: 'GET',
             url : "/api/state/"+stateId+"/cities",

@@ -26,7 +26,7 @@
                   <div class="col">
                     Sexo: 
                     <select name="gender" class="form-select" id="gender" required>
-                      <option selected>Selecione</option>
+                      <option value="" selected>Selecione</option>
                       <option value="M">Masculino</option>
                       <option value="F">Feminino</option>
                     </select>
@@ -41,14 +41,14 @@
                   <div class="col">
                     Estado: 
                     <select id="states" class="form-select" onChange="populateCitiesSelect();">
-                      <option selected>Selecione</option>
+                      <option value="" selected>Selecione</option>
                       
                     </select>
                   </div>
                   <div class="col">
                     Cidade: 
                     <select id="cities" class="form-select">
-                      <option selected>Selecione um estado primeiro</option>
+                      <option value="" selected>Selecione um estado primeiro</option>
                       
                     </select>
                   </div>
@@ -74,7 +74,7 @@
       cpf : $('#cpf').val(),
       name : $('#name').val(),
       birth : $('#birth').val(),
-      gender : $('#gender').val(),
+      gender : $('#gender').find(":selected").val(),
       address : $('#address').val(),
       state_id : $('#states').find(":selected").val(),
       city_id : $('#cities').find(":selected").val()
@@ -87,7 +87,7 @@
       dataType: 'json',
       success: function(data) 
       {
-        console.log('foi!');
+        alert('cadastrado com sucesso!');
       },
       error: function(data)
       {

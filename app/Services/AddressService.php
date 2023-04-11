@@ -9,7 +9,7 @@ class AddressService
     public function storeAddress(array $data, int $customerId) 
     {
         $newAddress = new Address();
-        $newAddress->street = $data['street'] ?? null;
+        $newAddress->street = $data['address'] ?? null;
         $newAddress->city_id = $data['city_id'];
         $newAddress->customer_id = $customerId;
         $newAddress->save();

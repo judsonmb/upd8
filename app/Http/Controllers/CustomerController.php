@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 use App\Services\CustomerService;
 use App\Services\AddressService;
 use App\Http\Requests\CustomerStoreRequest;
+use App\Http\Requests\GetCustomersRequest;
 
 class CustomerController extends Controller
 {
-    public function index(Request $request) 
+    public function index(GetCustomersRequest $request) 
     {
         return view('customers');
     }

@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class CustomerStoreRequest extends FormRequest
+class GetCustomersRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -37,12 +37,12 @@ class CustomerStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'cpf' => 'required|unique:customers,cpf|min:11|max:11|cpf',
-            'name' => 'required|max:255',
-            'birth' => 'required|date',
-            'gender' => 'required|in:M,F',
+            'cpf' => 'unique:customers,cpf|min:11|max:11|cpf',
+            'name' => 'max:255',
+            'birth' => 'date',
+            'gender' => 'in:M,F',
             'address' => 'max:255',
-            'city_id' => 'required|exists:cities,id'
+            'city_id' => 'exists:cities,id'
         ];
     }
 }
