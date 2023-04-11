@@ -27,6 +27,7 @@
                     
                 </div>
                 @yield('content')
+
             </main>
         </div>
     </div>

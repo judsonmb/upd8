@@ -8,7 +8,7 @@
                 <div class="card-header"><img src='/upd8.jpeg' width="110" height="100"/></div>
 
                 <div class="card-body">
-                    <a href='/customers/create'>Novo cliente</a>
+                    <a href='/customers/create'><button type="button" class="btn btn-success">Cadastrar</button></a>
                     <div class="card">
                         Consulta Cliente
 
