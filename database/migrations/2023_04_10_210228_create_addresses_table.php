@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('street')->nullable();
             $table->foreignId('city_id');
+            $table->foreignId('customer_id');
             $table->timestamps();
         });
     }

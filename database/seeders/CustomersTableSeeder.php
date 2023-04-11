@@ -18,28 +18,24 @@ class CustomersTableSeeder extends Seeder
                 'cpf' => '378.658.658-00',
                 'birth' => '1990-06-06',
                 'gender' => 'M',
-                'address_id' => '1'
             ],
             [
                 'name' => 'Ricardo Menezes', 
                 'cpf' => '326.652.654-00',
                 'birth' => '1980-06-06',
                 'gender' => 'M',
-                'address_id' => '2'
             ],
             [
                 'name' => 'Margaret Hamil', 
                 'cpf' => '235.326.148-12',
                 'birth' => '1995-06-06',
                 'gender' => 'F',
-                'address_id' => '3'
             ],
             [
                 'name' => 'Joan Clarke', 
                 'cpf' => '032.324.674-78',
                 'birth' => '2000-06-06',
                 'gender' => 'M',
-                'address_id' => '4'
             ],
         ]);
     }

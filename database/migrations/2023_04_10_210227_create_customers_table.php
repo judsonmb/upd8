@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('cpf')->unique();
             $table->date('birth');
             $table->enum('gender', ['M', 'F']);
-            $table->foreignId('address_id');
             $table->timestamps();
         });
     }
