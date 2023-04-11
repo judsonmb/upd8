@@ -96,12 +96,15 @@
   {
     var tableHtml = '';
     for (var i = 0; i < data.data.length; i++) {
+        date = new Date(data.data[i].birth);
+        birth = (date.getDate()+1) + "/" +  (date.getMonth()+1) + "/" + date.getFullYear();
+
         tableHtml += '<tr>'+
                     '<td><button type="button" class="btn btn-success">Editar</button></td>' +
                     '<td><button type="button" class="btn btn-danger">Excluir</button></td>' +
                     '<td>' + data.data[i].name + '</td>' +
                     '<td>' + data.data[i].cpf + '</td>' +
-                    '<td>' + data.data[i].birth + '</td>' +
+                    '<td>' + birth + '</td>' +
                     '<td>' + data.data[i].address.city.state.name + '</td>' +
                     '<td>' + data.data[i].address.city.name + '</td>' +
                     '<td>' + data.data[i].gender + '</td>' +
