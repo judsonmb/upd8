@@ -110,30 +110,35 @@
     $('#customerstable tbody').html(tableHtml);
 
     var paginationHtml = '';
+
+    console.log(data.links);
+    
     //previous button
-    var previousButtonLink = data.links[0].url ? data.links[0].url : '#';
-    paginationHtml += '<li class="page-item"><a class="page-link" href="'+previousButtonLink+'">'+
-                        '<span class="sr-only"> '+data.links[0].label+'</span>'+
-                      '</a></li>' 
+    if (data.links[0].url !== null) {
+      paginationHtml += '<li class="page-item"><a class="page-link" href="#" onClick="callSearchMethod(\'' + data.links[0].url + '\');">'+
+                          '<span class="sr-only"> '+data.links[0].label+'</span>'+
+                        '</a></li>' 
+    }
     
     //pagination numbers links
     for (var i = 1; i < data.links.length-1; i++) {
+      disabled = data.links[i].active ? 'disabled' : '';
       paginationHtml += '<li class="page-item">'+
-                        '<a class="page-link" href="'+data.links[i].url+'">'+data.links[i].label+''+
+                        '<a class="page-link '+disabled+'" href="#" onClick="callSearchMethod(\'' + data.links[i].url + '\');">'+data.links[i].label+''+
                         '</a></li>';
     }   
 
     //next button
-    var nextButtonLink = data.links[data.links.length-1].url ? data.links[data.links.length-1].url : '#';
-    paginationHtml += '<li class="page-item"><a class="page-link" href="'+nextButtonLink+'">'+
+    if (data.links[data.links.length-1].url !== null) {
+      paginationHtml += '<li class="page-item"><a class="page-link" href="#" onClick="callSearchMethod(\'' + data.links[data.links.length-1].url + '\');">'+
                         '<span class="sr-only"> '+data.links[data.links.length-1].label+'</span>'+
                       '</a></li>';
-
+    }
     
     $('#pagination').html(paginationHtml);
   }
 
-  function callSearchMethod() 
+  function callSearchMethod(url = null) 
   {
     $('#customerstable tbody').html('');
     
@@ -153,9 +158,11 @@
       city_id : $('#cities').find(":selected").val()
     }
 
+    url = url === 'null' ? '/api/customers' : url;
+
     $.ajax({
         type: 'POST',
-        url : '/api/customers',
+        url : url,
         data : body,
         dataType: 'json',
           success:function(data) 
