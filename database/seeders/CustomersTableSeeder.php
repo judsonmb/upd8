@@ -15,25 +15,25 @@ class CustomersTableSeeder extends Seeder
         \DB::table('customers')->insert([
             [
                 'name' => 'Wesley Barbosa', 
-                'cpf' => '378.658.658-00',
+                'cpf' => '37865865800',
                 'birth' => '1990-06-06',
                 'gender' => 'M',
             ],
             [
                 'name' => 'Ricardo Menezes', 
-                'cpf' => '326.652.654-00',
+                'cpf' => '32665265400',
                 'birth' => '1980-06-06',
                 'gender' => 'M',
             ],
             [
                 'name' => 'Margaret Hamil', 
-                'cpf' => '235.326.148-12',
+                'cpf' => '23532614812',
                 'birth' => '1995-06-06',
                 'gender' => 'F',
             ],
             [
                 'name' => 'Joan Clarke', 
-                'cpf' => '032.324.674-78',
+                'cpf' => '03232467478',
                 'birth' => '2000-06-06',
                 'gender' => 'M',
             ],

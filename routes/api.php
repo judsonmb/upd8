@@ -15,3 +15,6 @@ use App\Http\Controllers\CustomerController;
 |
 */
 Route::post('/customers', [CustomerController::class, 'getCustomers']);
+
+Route::post('/customers/store', [CustomerController::class, 'store']);
+

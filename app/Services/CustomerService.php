@@ -38,4 +38,15 @@ class CustomerService
         ->orderBy('name')
         ->paginate(4);
     }
+
+    public function storeCustomer(array $data) 
+    {
+        $newCustomer = new Customer();
+        $newCustomer->cpf = $data['cpf'];
+        $newCustomer->name = $data['name'];
+        $newCustomer->birth = $data['birth'];
+        $newCustomer->gender = $data['gender'];
+        $newCustomer->save();
+        return $newCustomer;
+    }
 }

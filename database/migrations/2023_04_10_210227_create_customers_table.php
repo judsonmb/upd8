@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('cpf')->unique();
+            $table->string('cpf', 11)->unique();
             $table->date('birth');
             $table->enum('gender', ['M', 'F']);
             $table->timestamps();
