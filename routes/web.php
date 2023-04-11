@@ -20,4 +20,7 @@ Route::get('/customers', [CustomerController::class, 'index'])->name('customers'
 
 Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
 
+Route::get('/customer/{customer}/edit', [CustomerController::class, 'edit'])->name('customers.edit');
+
+
 

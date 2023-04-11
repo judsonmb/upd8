@@ -101,7 +101,7 @@
         birth = (date.getDate()+1) + "/" +  (date.getMonth()+1) + "/" + date.getFullYear();
 
         tableHtml += '<tr>'+
-                    '<td><button type="button" class="btn btn-success">Editar</button></td>' +
+                    '<td><a href="/customer/'+data.data[i].id+'/edit"><button type="button" class="btn btn-success">Editar</button></td>' +
                     '<td><a href="#"><button type="button" class="btn btn-danger" onClick="destroy('+data.data[i].id+');">Excluir</button></td>' +
                     '<td>' + data.data[i].name + '</td>' +
                     '<td>' + data.data[i].cpf + '</td>' +

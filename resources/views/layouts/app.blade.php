@@ -64,23 +64,23 @@
     }
     
     $(document).ready(function() {
-    var $cpfField = $("#cpf");
-    $cpfField.mask('000.000.000-00', {reverse: true});
+        var $cpfField = $("#cpf");
+        $cpfField.mask('000.000.000-00', {reverse: true});
 
-    $.ajax({
-        type: 'GET',
-        url : '/api/states',
-        dataType: 'json',
-        success:function(data) 
-        {
-            var statesOptionsHtml = '';
-            for (var i = 0; i < data.data.length; i++) {
-                statesOptionsHtml += '<option value="'+data.data[i].id+'">'+data.data[i].name+'</option>';
-            }   
-            
-            $('#states').append(statesOptionsHtml);
-        }
-    });
+        $.ajax({
+            type: 'GET',
+            url : '/api/states',
+            dataType: 'json',
+            success:function(data) 
+            {
+                var statesOptionsHtml = '';
+                for (var i = 0; i < data.data.length; i++) {
+                    statesOptionsHtml += '<option value="'+data.data[i].id+'">'+data.data[i].name+'</option>';
+                }   
+                
+                $('#states').append(statesOptionsHtml);
+            }
+        });
     });
 </script>
 </html>

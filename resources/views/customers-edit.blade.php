@@ -10,17 +10,17 @@
         <div class="card-body">
           <a href='/'><button type="button" class="btn btn-success">Consultar</button></a>
           <div class="card">
-            Cadastro Cliente
+            Edição de Cliente
 
             <div class="card-body">
               <form>
-              @include('includes.form')
-              <div class="row">
-                <div class="col">
-                  <button type="button" onClick="callStoreMethod();" class="btn btn-primary">Salvar</button>
-                  <button type="button" onClick="emptyFields();" class="btn btn-secondary">Limpar</button>
+                @include('includes.form')
+                <div class="row">
+                  <div class="col">
+                    <button type="button" onClick="callUpdateMethod({{ $customer->id }});" class="btn btn-primary">Editar</button>
+                    <button type="button" onClick="emptyFields();" class="btn btn-secondary">Limpar</button>
+                  </div>
                 </div>
-              </div>
               </form>
             </div>
           </div>
@@ -30,7 +30,7 @@
   </div>
 </div>
 <script>
-  function callStoreMethod() 
+  function callUpdateMethod(id) 
   {
     body = {
       cpf : $('#cpf').val(),
@@ -43,13 +43,13 @@
     }
 
     $.ajax({
-      type: 'POST',
-      url : '/api/customers/store',
+      type: 'PUT',
+      url : '/api/customers/'+id+'/update',
       data : body,
       dataType: 'json',
       success: function(data) 
       {
-        alert('cadastrado com sucesso!');
+        alert('atualizado com sucesso!');
         window.location.href = '/';
       },
       error: function(data)

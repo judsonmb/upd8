@@ -50,8 +50,13 @@ class CustomerService
         return $newCustomer;
     }
 
-    public function deleteCustomer(int $id) 
+    public function updateCustomer(array $data, Customer $customer) 
     {
-        return Customer::find($id)->delete();;
+        $customer->cpf = $data['cpf'] ?? $customer->cpf;
+        $customer->name = $data['name'] ?? $customer->name;
+        $customer->birth = $data['birth'] ?? $customer->birth;
+        $customer->gender = $data['gender'] ?? $customer->gender;
+        $customer->save();
+        return $customer;
     }
 }

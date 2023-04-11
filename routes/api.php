@@ -23,6 +23,8 @@ Route::post('/customers/store', [CustomerController::class, 'store']);
 
 Route::delete('/customers/{customer}', [CustomerController::class, 'delete']);
 
+Route::put('/customers/{customer}/update', [CustomerController::class, 'update']);
+
 Route::get('/states', [StateController::class, 'getStates']);
 
 Route::get('/state/{id}/cities', [CityController::class, 'getCitiesFromStateId']);

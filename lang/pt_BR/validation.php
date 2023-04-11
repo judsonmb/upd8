@@ -199,7 +199,7 @@ return [
         'second'    => 'segundo',
         'sex'       => 'sexo',
         'state'     => 'estado',
-        'street'    => 'rua',
+        'address'    => 'rua',
         'subject'   => 'assunto',
         'text'      => 'texto',
         'time'      => 'hora',
