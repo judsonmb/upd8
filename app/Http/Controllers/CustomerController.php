@@ -17,7 +17,7 @@ class CustomerController extends Controller
         return view('customers');
     }
 
-    public function getCustomers(Request $request)
+    public function getCustomers(GetCustomersRequest $request)
     {
         $customers = (new CustomerService)->getCustomersListWithPagination($request->all());
         return response()->json($customers, 200);

@@ -27,10 +27,10 @@ class CustomerService
             $q->where('name', 'like', '%'.$data['name'].'%');
         })
         ->when(isset($data['birth']), function($q) use ($data){
-            $q->where('name', 'like', '%'.$data['birth'].'%');
+            $q->where('birth', $data['birth']);
         })
         ->when(isset($data['gender']), function($q) use ($data){
-            $q->where('name', $data['gender']);
+            $q->where('gender', $data['gender']);
         })
         ->with('address')
         ->with('address.city')

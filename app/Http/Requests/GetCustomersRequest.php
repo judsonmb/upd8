@@ -21,12 +21,14 @@ class GetCustomersRequest extends FormRequest
      */
     protected function prepareForValidation(): void
     {
-        $cpf = str_replace(".", "", $this->cpf);
-        $cpf = str_replace("-", "", $cpf);
-
-        $this->merge([
-            'cpf' => $cpf,
-        ]);
+        if ($this->has('cpf')) {
+            $cpf = str_replace(".", "", $this->cpf);
+            $cpf = str_replace("-", "", $cpf);
+    
+            $this->merge([
+                'cpf' => $cpf,
+            ]);
+        }   
     }
 
     /**
@@ -37,12 +39,7 @@ class GetCustomersRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'cpf' => 'unique:customers,cpf|min:11|max:11|cpf',
-            'name' => 'max:255',
-            'birth' => 'date',
-            'gender' => 'in:M,F',
-            'address' => 'max:255',
-            'city_id' => 'exists:cities,id'
+            
         ];
     }
 }
